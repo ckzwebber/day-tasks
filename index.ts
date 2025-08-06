@@ -1,0 +1,27 @@
+import { Task } from "./types/task";
+import { email } from "./email/email";
+import { getTasks } from "./tasks/tasks";
+import { weekday } from "./types/weekday";
+import cron from "node-cron";
+
+const main = async () => {
+  const dayOfWeek = new Date().getDay();
+
+  try {
+    const todayTasks: Task[] = await getTasks(dayOfWeek);
+    const stringDayOfWeek = weekday.get(dayOfWeek);
+    if (!stringDayOfWeek) {
+      throw new Error("Invalid day of the week");
+    }
+
+    await email.sendEmail("Webber", todayTasks, stringDayOfWeek);
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+  }
+};
+
+cron.schedule("0 5 * * *", async () => {
+  main();
+});
+
+console.log("Scheduler started. It will run every day at 5 AM.");
