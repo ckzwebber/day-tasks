@@ -4,6 +4,7 @@ export type databaseConfig = {
   host?: string;
   port?: number;
   database?: string;
+  ssl?: boolean;
 };
 
 export type QueryConfig = {

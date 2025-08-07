@@ -1,11 +1,13 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import path from "path";
+import { create } from "express-handlebars";
 import { Task } from "../types/task";
+import dotenv from "dotenv";
+dotenv.config();
 
 const emailTransporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: Number(process.env.EMAIL_PORT),
+  service: "gmail",
   secure: process.env.EMAIL_SECURE === "true",
   auth: {
     user: process.env.EMAIL_USER,
@@ -13,12 +15,15 @@ const emailTransporter = nodemailer.createTransport({
   },
 });
 
+const viewEngine = create({
+  extname: ".hbs",
+  layoutsDir: path.resolve(__dirname, "./views/"),
+  partialsDir: path.resolve(__dirname, "./views/"),
+  defaultLayout: false,
+});
+
 const handlebarOptions = {
-  viewEngine: {
-    extname: ".hbs",
-    layoutsDir: path.resolve(__dirname, "./views/"),
-    defaultLayout: false,
-  } as any,
+  viewEngine: viewEngine,
   viewPath: path.resolve(__dirname, "./views"),
   extName: ".hbs",
 };

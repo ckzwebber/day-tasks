@@ -5,7 +5,7 @@ import { weekday } from "./types/weekday";
 import cron from "node-cron";
 
 const main = async () => {
-  const requiredEnvs = ["PGUSER", "PGPASSWORD", "PGHOST", "PGPORT", "PGDATABASE", "EMAIL_HOST", "EMAIL_PORT", "EMAIL_USER", "EMAIL_PASS", "EMAIL_FROM", "EMAIL_TO"];
+  const requiredEnvs = ["PGUSER", "PGPASSWORD", "PGHOST", "PGPORT", "PGDATABASE", "EMAIL_USER", "EMAIL_PASS", "EMAIL_FROM", "EMAIL_TO"];
   for (const key of requiredEnvs) {
     if (!process.env[key]) {
       console.error(`⚠️ Missing env var: ${key}`);
@@ -31,5 +31,12 @@ const main = async () => {
 cron.schedule("0 5 * * *", () => main(), {
   timezone: "America/Sao_Paulo",
 });
+
+try {
+  main();
+} catch (error) {
+  console.error("Error in main function:", error);
+  process.exit(1);
+}
 
 console.log("Scheduler started. It will run every day at 5 AM.");

@@ -1,24 +1,58 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Tarefas de {{dayOfWeek}}</title>
+    <title>day-tasks by ckzwebber — Tarefas de {{dayOfWeek}}</title>
+    <style>
+      /* Reset básico */ body, table, td, a { margin: 0; padding: 0; text-decoration: none; } body { width: 100% !important; -webkit-text-size-adjust: 100%; font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f4f4f7; color: #51545e; } img { border: 0; outline: none; text-decoration: none; display: block; } /* Container principal */ .email-wrapper { width: 100%; padding: 20px 0; } .email-content {
+      max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); } /* Header */ .email-header { background: #4f46e5; padding: 20px; text-align:
+      center; } .email-header h1 { color: #ffffff; font-size: 24px; margin: 0; } /* Corpo */ .email-body { padding: 30px; } .greeting { font-size: 18px; margin-bottom: 10px; } .intro { margin-bottom: 20px; } /* Lista de
+      tarefas */ .task-list { list-style: none; padding: 0; margin: 0; } .task-item { padding: 15px; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 12px; transition: background-color 0.2s; }
+      .task-item:hover { background-color: #f9fafb; } .task-title { font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 6px; } .task-desc { font-size: 14px; color: #4b5563; } /* Mensagem sem tarefas */
+      .no-tasks { text-align: center; padding: 20px; font-style: italic; color: #6b7280; } /* Footer */ .email-footer { text-align: center; padding: 20px; font-size: 12px; color: #9ca3af; }
+    </style>
   </head>
   <body>
-    <p>Olá {{name}},</p>
-    <p>Estas são suas tarefas para <strong>{{dayOfWeek}}</strong>:</p>
-    {{#if tasks.length}}
-      <ul>
-        {{#each tasks}}
-          <li>
-            <strong>{{title}}</strong><br />
-            {{description}}
-          </li>
-        {{/each}}
-      </ul>
-    {{else}}
-      <p>Você não tem tarefas agendadas para hoje. Bom descanso! 😊</p>
-    {{/if}}
-    <hr />
-    <p>— Seu App de Tarefas</p>
+    <table class="email-wrapper" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center">
+          <table class="email-content" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="email-header">
+                <h1>Day-Tasks!</h1>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="email-body">
+                <p class="greeting">Olá, {{name}}!</p>
+                <p class="intro">Aqui estão suas tarefas para <strong>{{dayOfWeek}}</strong>:</p>
+
+                {{#if tasks.length}}
+                  <ul class="task-list">
+                    {{#each tasks}}
+                      <li class="task-item">
+                        <div class="task-title">{{title}}</div>
+                        <div class="task-desc">{{description}}</div>
+                      </li>
+                    {{/each}}
+                  </ul>
+                {{else}}
+                  <div class="no-tasks">Você não tem tarefas agendadas para hoje. Bom descanso! 😊</div>
+                {{/if}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="email-footer">
+                — Enviado pelo
+                <strong>Day-Tasks</strong><br />
+                Desenvolvido por ckzwebber
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

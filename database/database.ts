@@ -9,6 +9,7 @@ const config: databaseConfig = {
   host: process.env.PGHOST,
   port: Number(process.env.PGPORT),
   database: process.env.PGDATABASE,
+  ssl: true,
 };
 
 const query = async (queryObject: QueryConfig) => {
