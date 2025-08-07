@@ -24,19 +24,13 @@ const main = async () => {
 
     await email.sendEmail("Webber", todayTasks, stringDayOfWeek);
   } catch (error) {
-    console.error("Error fetching tasks:", error);
+    console.error("Error in main function:", error);
+    throw error;
   }
 };
 
 cron.schedule("0 5 * * *", () => main(), {
   timezone: "America/Sao_Paulo",
 });
-
-try {
-  main();
-} catch (error) {
-  console.error("Error in main function:", error);
-  process.exit(1);
-}
 
 console.log("Scheduler started. It will run every day at 5 AM.");
