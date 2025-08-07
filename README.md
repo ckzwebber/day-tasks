@@ -114,7 +114,6 @@ CREATE TABLE tasks (
 ### 4. Rodar localmente
 
 ```bash
-npm run build   # Transpila TS
 npm start       # Inicia o scheduler (às 5AM, ou force execução)
 ```
 
