@@ -1,0 +1,24 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tarefas de {{dayOfWeek}}</title>
+  </head>
+  <body>
+    <p>Olá {{name}},</p>
+    <p>Estas são suas tarefas para <strong>{{dayOfWeek}}</strong>:</p>
+    {{#if tasks.length}}
+      <ul>
+        {{#each tasks}}
+          <li>
+            <strong>{{title}}</strong><br />
+            {{description}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>Você não tem tarefas agendadas para hoje. Bom descanso! 😊</p>
+    {{/if}}
+    <hr />
+    <p>— Seu App de Tarefas</p>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
+import path from "path";
 import { Task } from "../types/task";
 
 const emailTransporter = nodemailer.createTransport({
@@ -14,12 +15,11 @@ const emailTransporter = nodemailer.createTransport({
 
 const handlebarOptions = {
   viewEngine: {
-    extName: ".hbs",
-    partialsDir: "./views/",
-    layoutsDir: "./views/",
+    extname: ".hbs",
+    layoutsDir: path.resolve(__dirname, "./views/"),
     defaultLayout: false,
-  },
-  viewPath: "./views/",
+  } as any,
+  viewPath: path.resolve(__dirname, "./views"),
   extName: ".hbs",
 };
 
