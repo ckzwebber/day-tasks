@@ -37,8 +37,6 @@ const main = async () => {
   }
 };
 
-main();
-
 cron.schedule("0 5 * * *", () => main(), {
   timezone: "America/Sao_Paulo",
 });
