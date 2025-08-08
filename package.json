@@ -1,26 +1,33 @@
 {
   "name": "day-tasks",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsx index.ts"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev src/index.ts",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down --remove-orphans",
+    "docker:restart": "docker compose down --remove-orphans && docker system prune -af && docker compose up -d --build",
+    "docker:logs": "docker compose logs -f app"
   },
-  "author": "ckzwebber",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@types/node": "^24.2.0",
-    "@types/node-cron": "^3.0.11",
-    "@types/nodemailer": "^6.4.17",
-    "@types/nodemailer-express-handlebars": "^4.0.5",
-    "@types/pg": "^8.15.5",
     "dotenv": "^17.2.1",
     "express-handlebars": "^8.0.3",
     "node-cron": "^4.2.1",
     "nodemailer": "^7.0.5",
     "nodemailer-express-handlebars": "^7.0.0",
     "pg": "^8.16.3",
-    "ts-node": "^10.9.2"
+    "pino": "^9.8.0",
+    "pino-loki": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^6.4.17",
+    "@types/nodemailer-express-handlebars": "^4.0.5",
+    "@types/pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   }
 }
