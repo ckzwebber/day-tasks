@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/email/views dist/email/views",
     "start": "node dist/index.js",
     "dev": "ts-node-dev src/index.ts",
     "docker:up": "docker compose up -d --build",
