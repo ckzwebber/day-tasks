@@ -1,6 +1,6 @@
 # Day-Tasks — Envio Diário de Tarefas por E‑mail
 
-Seja bem‑vindo ao **Day‑Tasks**, um micro‑app em **Node.js** + **TypeScript** que conecta a um PostgreSQL (ex.: Neon), busca as tarefas agendadas para o dia e envia um e‑mail diariamente às **05:00** (fuso `America/Sao_Paulo`) com a lista do dia. O projeto já vem com configuração para build TypeScript e containers (Docker + Docker Compose) com Loki + Grafana para logs.
+Seja bem‑vindo ao **Day‑Tasks**, um micro‑app em **Node.js** + **TypeScript** que conecta a um PostgreSQL, busca as tarefas agendadas para o dia e envia um e‑mail diariamente às **05:00** (fuso `America/Sao_Paulo`) com a lista do dia. O projeto já vem com configuração para build TypeScript e containers (Docker + Docker Compose) com Loki + Grafana para logs.
 
 ---
 
